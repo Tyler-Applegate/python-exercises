@@ -1,0 +1,44 @@
+-- What is the data type?
+
+1.  99.9        =       dec
+2. "False"      =       str
+3. False        =       bool
+4. "0"          =       str
+5.  0           =       int
+6.  True        =       bool
+7.  "True"      =       str
+8.  [{}]        =       list
+9.  {"a": []}   =       dict
+
+What data type would best represent:
+
+1.  A term or phrase typed into a search box?
+        -- str
+
+2.  If a user is logged in?
+        -- bool
+
+3.  A discount amount to apply to a user's shopping cart?
+        -- dec
+
+4.  Whether or not a coupon code is valid?
+        -- bool
+
+5.  An email address typed into a registration form?
+        -- str
+
+6.  The price of a product?
+        -- dec
+
+7.  A Matrix?
+        -- dict
+
+8.  The email addresses collected from a registration form?
+        -- list
+
+9.  Information about applicants to Codeup's data science program?
+        -- dict
+
+
+For each of the following code blocks, read the expression and predict 
+what the result of evaluating it would be, then execute the expression in your Python REPL.
