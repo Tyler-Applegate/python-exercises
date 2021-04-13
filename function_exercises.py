@@ -10,7 +10,7 @@ def is_two(x):
 # False otherwise.
 vowel = ["a" , "e" , "i" , "o" , "u"]
 
-def is_vowel (word):
+def is_vowel(word):
     word = word.lower()
     if word[0] in vowel and len(word)<=1:
         return True
@@ -37,7 +37,7 @@ def is_consonant(word):
 vowel = ["a" , "e" , "i" , "o" , "u"]
 alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-def is_consonant (word):
+def is_consonant(word):
     word = word.lower()
     if word[0]  not in vowel and len(word)<=1 and word in alpha:
         return True
@@ -46,7 +46,7 @@ def is_consonant (word):
 # and now that I know about .isalpha()...
 
 vowel = ['a', 'e', 'i', 'o', 'u']
-def is_consonant (word):
+def is_consonant(word):
     word = word.lower()
     if word[0].isalpha() and word[0] not in vowel and len(word) <= 1:
         return True
@@ -134,47 +134,75 @@ def remove_vowels(string):
 #           - First Name will become first_name
 #           - % Completed will become completed
 
-def get_valid_string(string):
-    return ''.join([c for c in string if c.isalnum() or c == ' ' or c == '_'])
+# def get_valid_string(string):
+#     return ''.join([c for c in string if c.isalnum() or c == ' ' or c == '_'])
 
-def remove_first_digit(string):
-    for x in  string:
-        if x == '_' or x.isalpha():
-            return string
-        else:
-            string = string[1:]
-    return string
+# def remove_first_digit(string):
+#     for x in  string:
+#         if x == '_' or x.isalpha():
+#             return string
+#         else:
+#             string = string[1:]
+#     return string
         
-def normalize_name(string):
-    valid_string = remove_first_digit(string)
-    return valid_string.lower().strip().replace(' ','_')
+# def normalize_name(string):
+#     valid_string = remove_first_digit(string)
+#     return valid_string.lower().strip().replace(' ','_')
 
 # with Chad and John's help...
 
-def normalize_name(word):
+# def normalize_name(word):
     
-# creating an empty string
-    characters = ' '
+# # creating an empty string
+#     characters = ' '
     
-# removing special symbols    
-    for letter in word:
-        if letter.isalnum() or letter == ' ' or letter == '_':
-            characters += letter
+# # removing special symbols    
+#     for letter in word:
+#         if letter.isalnum() or letter == ' ' or letter == '_':
+#             characters += letter
             
-#checking first character for digits, and removing
-    while characters[0].isdigit():
-        characters = characters[1:]
+# #checking first character for digits, and removing
+#     while characters[0].isdigit():
+#         characters = characters[1:]
         
-#stripping whitespace, making lowercase, replacing empty space w/ underscore
-    characters = characters.strip().lower().replace(' ', '_')
-    return characters
+# #stripping whitespace, making lowercase, replacing empty space w/ underscore
+#     characters = characters.strip().lower().replace(' ', '_')
+#     return characters
 
-print(normalize_name)
+# normalize_name('9&123ascd -asd867%')
 
+# this is a cleaner version, that includes th .isidentifier()
+
+def normalize_name(string):
+    output = ""
+    
+    # lowercase all the things
+    string = string.lower()
+
+    # Filter out any non-valid identifiers, keep spaces to turn into _
+    for character in string:
+        if character.isidentifier() or character == " ":
+            output += character
+    
+    # remove any leading or trailing spaces
+    output = output.strip()
+    
+    # replace " " with "_"
+    output = output.replace(" ", "_")
+    
+    return output
 # 11.   Write a function named cumulative_sum that accepts a list of numbers and returns a list that 
 #       is the cumulative sum of the numbers in the list.
 #       - cumulative_sum([1, 1, 1]) returns [1, 2, 3]
 #       - cumulative_sum([1, 2, 3, 4]) returns [1, 3, 6, 10]
+
+def cumulative_sum(numbers):
+    sums = []
+    total = 0
+    for number in range(0, len(numbers)):
+        total += list[number]
+        sums.append(total)
+    return sums
 # 
 # Additional Exercise
 # 
