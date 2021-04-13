@@ -2,10 +2,18 @@
 # Create a file named function_exercises.py for this exercise. After creating each function specified below, write the necessary code in order to test your function.
 # 1. Define a function named is_two. It should accept one input and return True if the passed 
 # input is either the number or the string 2, False otherwise.
+# this will check if it is the integer 2, or the str '2'
 def is_two(x):
-    if x == 2 or x == '2':
-        return True
-    return False
+    return x == 2 or x == '2'
+
+# assertion tests...
+# assert actual vaue == expected value
+
+assert is_two(2) == True
+assert is_two(2.0) == True
+assert is_two('2') == True
+assert is_two(5) == False
+assert is_two('Lakers') == False
 # 2. Define a function named is_vowel. It should return True if the passed string is a vowel, 
 # False otherwise.
 vowel = ["a" , "e" , "i" , "o" , "u"]
@@ -19,29 +27,29 @@ def is_vowel(word):
 # False otherwise. Use your is_vowel function to accomplish this.
 # using the is_vowel function, and ASSUMMMING the string ONLY contains letters
 # we could solve as follows:
-def is_consonant(word):
-    word = word.lower()
-    if word[0] not in vowel and len(word) <= 1:
-        return True
-    return False
+# def is_consonant(word):
+#     word = word.lower()
+#     if word[0] not in vowel and len(word) <= 1:
+#         return True
+#     return False
 # this works on all strings, not just letters
-consonant = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+# consonant = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
 
-def is_consonant(word):
-    word = word.lower()
-    if word[0] in consonant and len(word) <= 1:
-        return True
-    return False
+# def is_consonant(word):
+#     word = word.lower()
+#     if word[0] in consonant and len(word) <= 1:
+#         return True
+#     return False
 
 # if we wanted to use is_vowel function, we could do so like:
-vowel = ["a" , "e" , "i" , "o" , "u"]
-alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+# vowel = ["a" , "e" , "i" , "o" , "u"]
+# alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-def is_consonant(word):
-    word = word.lower()
-    if word[0]  not in vowel and len(word)<=1 and word in alpha:
-        return True
-    return False
+# def is_consonant(word):
+#     word = word.lower()
+#     if word[0]  not in vowel and len(word)<=1 and word in alpha:
+#         return True
+#     return False
 
 # and now that I know about .isalpha()...
 
@@ -56,14 +64,15 @@ def is_consonant(word):
 # 4.    Define a function that accepts a string that is a word. The function should capitalize the 
 #       first letter of the word if the word starts with a consonant.
 
-vowel = ['a', 'e', 'i', 'o', 'u']
-
-def is_consonant(word):
-    word = word.lower()
-    if word.startswith(tuple(vowel)):
-        return word
-    else:
-        return word.capitalize()
+def capitalize_starting_consonant(string):
+    if type(string) != str:
+        return False
+    
+    first_letter = string[0]
+    if is_consonant(first_letter):
+        string = string.capitalize()
+        
+    return string
 
 # 5.    Define a function named calculate_tip. It should accept a tip percentage (a number between 0 
 #       and 1) and the bill total, and return the amount to tip.
@@ -83,17 +92,19 @@ def apply_discount(original_price, discount_percentage):
     return  (original_price - original_price * discount_percentage)
 
 # this works if discount is input as an integer between 0 and 100
-def apply_discount(original_price, discount_percentage):
-    original_price = float(original_price)
-    discount_percentage = float(discount_percentage) / 100
-    return  (original_price - original_price * discount_percentage)
+# def apply_discount(original_price, discount_percentage):
+#     original_price = float(original_price)
+#     discount_percentage = float(discount_percentage) / 100
+#     return  (original_price - original_price * discount_percentage)
 
 # 7.    Define a function named handle_commas. It should accept a string that is a number that contains 
 #       commas in it as input, and return a number as output.
 
 def handle_commas(string):
-    new_string = float(string.replace(',', ''))
-    return new_string
+    if type(string) != str:
+        return 'Input must be a string.'
+    
+    return float(string.replace(',' , ''))
 
 # 8. Define a function named get_letter_grade. It should accept a number and 
 # return the letter grade associated with that number (A-F).
